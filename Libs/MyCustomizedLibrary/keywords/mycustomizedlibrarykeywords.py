@@ -77,4 +77,8 @@ class MyCustomizedLibraryKeywords(LibraryComponent):
 
     @keyword
     def is_error_message(self, error_message):
-        return error_message in self.get_login_alert_messages()
+        messages = self.get_login_alert_messages()
+        if error_message in messages:
+            pass
+        else:
+            raise AssertionError("Message '{}' is not found".format(error_message))
